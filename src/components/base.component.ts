@@ -1,3 +1,4 @@
+// import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { AlertController, App, MenuController, NavController } from 'ionic-angular';
 import { AuthService } from '../providers/auth/auth.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -9,6 +10,7 @@ export abstract class baseComponent implements OnInit{
 
     protected navCtrl: NavController;
 
+ 
     /*  You can use this component within a menu or page header
          Well, take the current navigation (ngOnInit) */
 
@@ -20,8 +22,8 @@ export abstract class baseComponent implements OnInit{
     ) {}
 
     ngOnInit(): void {
-        // this.navCtrl = this.app.getActiveNav(); // receives the used navController
-        this.navCtrl = this.app.getActiveNavs()[0];
+       // this.navCtrl = this.app.getActiveNav(); // receives the used navController
+       this.navCtrl = this.app.getActiveNavs()[0];
     }
 
     onLogOut(): void {

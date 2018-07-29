@@ -12,8 +12,8 @@ import { UserProfilePage } from './../../pages/user-profile/user-profile';
 })
 export class UserMenuComponent extends baseComponent {
 
-  // inside .ts if it references it as currentUser, but there in HTML it calls user
-  @Input('user') currentUser: User;  
+   // inside .ts if it references it as currentUser, but there in HTML it calls user
+   @Input('user') currentUser: User;  
 
   constructor(
     public alertCtrl: AlertController,

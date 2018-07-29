@@ -30,7 +30,6 @@ export class ChatPage {
   private chat1: FirebaseObjectObservable<Chat>;  //sender chat
   private chat2: FirebaseObjectObservable<Chat>;  //recipient chat
 
-
   constructor(
     public authService: AuthService,
     public chatService: ChatService,
@@ -45,7 +44,7 @@ export class ChatPage {
   }
 
   ionViewDidLoad(): void {
-    this.recipient = this.navParams.get('recipientUser'); //receives from parameter in home.ts
+    this.recipient = this.navParams.get('recipientUser'); //receive from home.ts
     this.pageTitle = this.recipient.name;
     this.userService.currentUser
       .first()
@@ -53,17 +52,17 @@ export class ChatPage {
         this.sender = currentUser;
 
        // take the chats for the sender and the recipient
-        this.chat1 = this.chatService.getDeepChat(this.sender.$key, this.recipient.$key);
-        this.chat2 = this.chatService.getDeepChat(this.recipient.$key,this.sender.$key);
+       this.chat1 = this.chatService.getDeepChat(this.sender.$key, this.recipient.$key);
+       this.chat2 = this.chatService.getDeepChat(this.recipient.$key,this.sender.$key);
 
-       // update user's photo
-        if (this.recipient.photo) {
-          this.chat1
-            .first()
-            .subscribe((chat: Chat) => {
-              this.chatService.updatePhoto(this.chat1, chat.photo, this.recipient.photo);
-            })
-        }
+      // update user's photo
+       if (this.recipient.photo) {
+         this.chat1
+           .first()
+           .subscribe((chat: Chat) => {
+             this.chatService.updatePhoto(this.chat1, chat.photo, this.recipient.photo);
+           })
+       }
         
 
         let doSubscription = () => {
@@ -92,7 +91,7 @@ export class ChatPage {
           });
         }
 
-        // search for chat messages: (have to see if the user order is right
+          // search for chat messages: (have to see if the user order is right
        // sometimes the sender (id 1) in vdd is the recipient (id 2) and vice versa
         this.messages = this.messageService.getMessages(this.sender.$key, this.recipient.$key);
        // check if there is any message in this type of chat
@@ -122,7 +121,7 @@ export class ChatPage {
         new Message (this.sender.$key, newMessage, currentTimeStamp, false),
         this.messages
       ).then(() => {
-        //update last message and timestamp of 2 cheats
+       //update last message and timestamp of 2 cheats
         this.chat1
           .update({
             lastMessage: newMessage,
@@ -138,7 +137,7 @@ export class ChatPage {
     }
   }
 
-  // optional animation duration parameter
+   // optional animation duration parameter
   private scrollToBottom(duration?: number): void {
     setTimeout(() => {
       if (this.content) { // if you have already loaded this.content (do not be undefined)

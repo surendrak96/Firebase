@@ -1,7 +1,7 @@
 export class Message {
-    
-    public $key: string; // como o firebase utiliza ele automaticamente, não precisa por ele no construtor
-    
+      // it does not pass in the constructor pq this $ key is automatically generated in the firebase and would conflict when creating the chat
+ 
+    public $key: string; 
     constructor(
         public userId: string,
         public text: string,

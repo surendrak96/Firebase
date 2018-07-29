@@ -1,8 +1,8 @@
 export class Chat {
     
     public $key: string;
-    // não passa no construtor pq esse $key é gerado automaticamente no firebase e ia dar conflito na hora de criar o chat
-
+     // it does not pass in the constructor pq this $ key is automatically generated in the firebase and would conflict when creating the chat
+ 
     constructor(
         public lastMessage: string,
         public timeStamp: any,

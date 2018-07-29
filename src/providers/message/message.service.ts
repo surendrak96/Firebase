@@ -26,7 +26,7 @@ export class MessageService extends BaseService{
   }
 
   setMessageRead(userId1: string, userId2: string, messageId: string): void {
-  // this.af.database.list (`/ messages / $ {userId1} - $ {userId2} / $ {messageId}`)
+    // this.af.database.list(`/messages/${userId1}-${userId2}/${messageId}`)
     this.af.database.list(`/messages/${userId1}-${userId2}`)
       .update(messageId, {
         read: true

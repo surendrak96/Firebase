@@ -24,7 +24,7 @@ export class ChatService extends BaseService {
       .subscribe((authState: FirebaseAuthState) => {
        // if user is logged in
         if(authState) {
-        // auth is the user's node (if any)
+         // auth is the user's node (if any)
           this.chats = <FirebaseListObservable<Chat[]>>this.af.database.list(`/chats/${authState.auth.uid}`, {
             query: {
               orderByChild: 'timeStamp' // returns in GROWING order (q must be descending, ie the most recent message)
@@ -41,7 +41,7 @@ export class ChatService extends BaseService {
     return this.af.database.object(`/chats/${userId1}/${userId2}`)
       .set(chat)
       .catch(this.handlePromiseError);
-   // chats nodes are composed by the id of the 2 users
+  // chats nodes are composed by the id of the 2 users
   }
 
   getDeepChat(userId1: string, userId2: string): FirebaseObjectObservable<Chat>{
@@ -51,7 +51,7 @@ export class ChatService extends BaseService {
 
   updatePhoto(chat: FirebaseObjectObservable<Chat>, chatPhoto: string, recipientUserPhoto: string): firebase.Promise<void> {
     if (chatPhoto != recipientUserPhoto) {
-    // Then you have to update the chat photo.
+     // Then you have to update the chat photo.
       return chat.update({
         photo: recipientUserPhoto
       }).then(() => {

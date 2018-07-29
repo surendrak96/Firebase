@@ -255,7 +255,7 @@ var ChatPage = (function () {
     ], ChatPage.prototype, "content", void 0);
     ChatPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/chat/chat.html"*/'<ion-header>\n\n  <custom-logged-header [title]="pageTitle" [user]="recipient"></custom-logged-header>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list no-lines>\n    \n    <message-box *ngFor="let message of messages | async" [message]="message" \n                  [isFromSender]="(message.userId == sender.$key)" [alreadyRead]="(message.read)">\n                  <!-- If the user id (sender. $ Key) is equal to the id of the message owner (message.userId) then it will return true -->\n    </message-box>\n  </ion-list>\n</ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n    <ion-item no-lines>\n      <ion-input type="text" (keyup.enter)="sendMessage(newMessage); newMessage = \'\' "\n                 placeholder="Type here..." [(ngModel)]="newMessage">\n                 <!-- key up detects if pressing enter activates the send msg function -->\n      </ion-input>\n      <button ion-button item-right (click)="sendMessage(newMessage); newMessage = \'\' "> \n        <!-- dps q call function, new message turns an empty string-->\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/chat/chat.html"*/,
+            selector: 'page-chat',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/chat/chat.html"*/'<ion-header>\n\n  <custom-logged-header [title]="pageTitle" [user]="recipient"></custom-logged-header>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list no-lines>\n    <!-- <ion-item *ngFor="let message of messages | async">{{message.text}}</ion-item> -->\n    <message-box *ngFor="let message of messages | async" [message]="message" \n                  [isFromSender]="(message.userId == sender.$key)" [alreadyRead]="(message.read)">\n                   <!-- If the user id (sender. $ Key) is equal to the id of the message owner (message.userId) then it will return true -->\n\n    </message-box>\n  </ion-list>\n</ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n    <ion-item no-lines>\n      <ion-input type="text" (keyup.enter)="sendMessage(newMessage); newMessage = \'\' "\n                 placeholder="Type here..." [(ngModel)]="newMessage">\n                <!-- key up detects if pressing enter activates the send msg function -->\n\n      </ion-input>\n      <button ion-button item-right (click)="sendMessage(newMessage); newMessage = \'\' "> \n         <!-- dps q call function, new message turns an empty string-->\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-item>\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/chat/chat.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_3__providers_chat_chat_service__["a" /* ChatService */],
@@ -354,7 +354,7 @@ var UserProfilePage = (function () {
     };
     UserProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-user-profile',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/user-profile/user-profile.html"*/'<ion-header>\n\n  <custom-logged-header [title]=" \'User Profile\' "></custom-logged-header>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <user-info [user]="currentUser"></user-info>\n\n  <button ion-button block (click)="canEdit = !canEdit">\n   \n    Edit Profile\n  </button>\n\n  <form (ngSubmit)="onSubmit($event)" *ngIf="canEdit" #profileForm="ngForm">\n  \n    <ion-item>\n      <ion-icon name="person" item-left></ion-icon>\n      <ion-input type="text" placeholder="Name" [(ngModel)]="currentUser.name"\n                 name="name" required minlength="3">\n      </ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name="at" item-left></ion-icon>\n      <ion-input type="text" placeholder="Username" [(ngModel)]="currentUser.username"\n                 name="username" required minlength="3">\n      </ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name="image" item-left></ion-icon>\n      <input type="file" accept="image/*" (change)="onPhoto($event)">\n        </ion-item>\n\n    <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>\n    \n    <br/>\n    <button ion-button block type="submit" [disabled]="profileForm.form.invalid">Save</button>\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/user-profile/user-profile.html"*/,
+            selector: 'page-user-profile',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/user-profile/user-profile.html"*/'<ion-header>\n\n  <custom-logged-header [title]=" \'User Profile\' "></custom-logged-header>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <user-info [user]="currentUser"></user-info>\n\n  <button ion-button block (click)="canEdit = !canEdit">\n    <!-- ao clicar, o canEdit passa a ser falso -->\n    Edit Profile\n  </button>\n\n  <form (ngSubmit)="onSubmit($event)" *ngIf="canEdit" #profileForm="ngForm">\n    <!-- variável profileForm recebe o elemento do formulário (ngForm) -->\n\n    <ion-item>\n      <ion-icon name="person" item-left></ion-icon>\n      <ion-input type="text" placeholder="Name" [(ngModel)]="currentUser.name"\n                 name="name" required minlength="3">\n      </ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name="at" item-left></ion-icon>\n      <ion-input type="text" placeholder="Username" [(ngModel)]="currentUser.username"\n                 name="username" required minlength="3">\n      </ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-icon name="image" item-left></ion-icon>\n      <input type="file" accept="image/*" (change)="onPhoto($event)">\n      </ion-item>\n\n    <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>\n    \n    <br/>\n    <button ion-button block type="submit" [disabled]="profileForm.form.invalid">Save</button>\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/user-profile/user-profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */],
@@ -395,11 +395,11 @@ var map = {
 		3
 	],
 	"../pages/signin/signin.module": [
-		612,
+		611,
 		2
 	],
 	"../pages/signup/signup.module": [
-		611,
+		612,
 		1
 	],
 	"../pages/user-profile/user-profile.module": [
@@ -521,7 +521,7 @@ var MessageService = (function (_super) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return baseComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_signin_signin__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_signin_signin__ = __webpack_require__(94);
 
 // import { App } from 'ionic-angular/components/app/app';
 // import { MenuController } from 'ionic-angular/components/app/menu-controller';
@@ -600,8 +600,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_message_message_service__ = __webpack_require__(230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_component__ = __webpack_require__(606);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_progress_bar_progress_bar_component__ = __webpack_require__(607);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_signup_signup__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_signin_signin__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_signup_signup__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_signin_signin__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_user_info_user_info_component__ = __webpack_require__(608);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_user_menu_user_menu_component__ = __webpack_require__(609);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_user_user_service__ = __webpack_require__(51);
@@ -671,8 +671,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_15__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/chat/chat.module#ChatPageModule', name: 'ChatPage', segment: 'chat', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/signin/signin.module#SigninPageModule', name: 'SigninPage', segment: 'signin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/signup/signup.module#SignupPageModule', name: 'SignupPage', segment: 'signup', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/user-profile/user-profile.module#UserProfilePageModule', name: 'UserProfilePage', segment: 'user-profile', priority: 'low', defaultHistory: [] }
                     ]
                 })
@@ -912,10 +912,9 @@ var UserService = (function (_super) {
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
         __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Inject */])(__WEBPACK_IMPORTED_MODULE_3_angularfire2__["e" /* FirebaseApp */])),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2__["a" /* AngularFire */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2__["a" /* AngularFire */]) === "function" && _a || Object, Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_angularfire2__["a" /* AngularFire */], Object, __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Http */]])
     ], UserService);
     return UserService;
-    var _a, _b;
 }(__WEBPACK_IMPORTED_MODULE_4__base_base_service__["a" /* BaseService */]));
 
 //# sourceMappingURL=user.service.js.map
@@ -928,7 +927,7 @@ var UserService = (function (_super) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Chat; });
 var Chat = (function () {
-    // não passa no construtor pq esse $key é gerado automaticamente no firebase e ia dar conflito na hora de criar o chat
+    // it does not pass in the constructor pq this $ key is automatically generated in the firebase and would conflict when creating the chat
     function Chat(lastMessage, timeStamp, title, photo) {
         this.lastMessage = lastMessage;
         this.timeStamp = timeStamp;
@@ -1036,7 +1035,7 @@ var CustomLoggedHeaderComponent = (function (_super) {
     ], CustomLoggedHeaderComponent.prototype, "user", void 0);
     CustomLoggedHeaderComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'custom-logged-header',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/components/custom-logged-header/custom-logged-header.component.html"*/'<ion-navbar>\n    <button ion-button menuToggle="user-menu">\n      <ion-icon name="menu"></ion-icon>\n    </button>\n\n  <ion-title>\n\n    <ion-item detail-none no-lines color="transparent" *ngIf="user; else titleTemplate">\n      \n      <ion-avatar item-start>\n        <img [src]="user.photo || \'assets/imgs/no-photo.jpg\' ">\n      </ion-avatar>\n      {{ title }}\n    </ion-item>\n\n    <ng-template #titleTemplate>\n      {{ title }}\n    </ng-template>\n  \n  </ion-title>\n\n  <ion-buttons end>\n    <button ion-button icon-only (click)="onLogOut()">\n      <ion-icon name="exit"></ion-icon>\n    </button>\n  </ion-buttons>\n</ion-navbar>'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/components/custom-logged-header/custom-logged-header.component.html"*/
+            selector: 'custom-logged-header',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/components/custom-logged-header/custom-logged-header.component.html"*/'<ion-navbar>\n    <button ion-button menuToggle="user-menu">\n      <ion-icon name="menu"></ion-icon>\n    </button>\n\n  <ion-title>\n\n    <ion-item detail-none no-lines color="transparent" *ngIf="user; else titleTemplate">\n      <!--ng-template #titleTemplate -->\n      <ion-avatar item-start>\n        <img [src]="user.photo || \'assets/imgs/no-photo.jpg\' ">\n      </ion-avatar>\n      {{ title }}\n    </ion-item>\n\n    <ng-template #titleTemplate>\n      {{ title }}\n    </ng-template>\n  \n  </ion-title>\n\n  <ion-buttons end>\n    <button ion-button icon-only (click)="onLogOut()">\n      <ion-icon name="exit"></ion-icon>\n    </button>\n  </ion-buttons>\n</ion-navbar>'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/components/custom-logged-header/custom-logged-header.component.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__["a" /* AuthService */],
@@ -1088,7 +1087,7 @@ var MessageBoxComponent = (function () {
     ], MessageBoxComponent.prototype, "alreadyRead", void 0);
     MessageBoxComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'message-box',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/components/message-box/message-box.component.html"*/' <div class="text" [ngClass]="{\'sender-background\' : isFromSender}">\n  <p>{{ message.text }}</p>\n  <!-- <p class="timestamp"> {{ message.timeStamp | date:\'dd/MM/y H:mm\' }}</p> -->\n  <p class="timestamp" > {{ message.timeStamp | date: \'HH:mm\' }}\n    <ion-icon class="primeiro-icone" name="md-checkmark" [ngClass]="{\'ja-leu\' : alreadyRead}" *ngIf="isFromSender"></ion-icon>\n    <ion-icon class="segundo-icone" name="md-checkmark" [ngClass]="{\'ja-leu\' : alreadyRead}" *ngIf="isFromSender"></ion-icon>\n  </p>\n\n \n</div>'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/components/message-box/message-box.component.html"*/,
+            selector: 'message-box',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/components/message-box/message-box.component.html"*/'<div class="text" [ngClass]="{\'sender-background\' : isFromSender}">\n  <p>{{ message.text }}</p>\n  <!-- <p class="timestamp"> {{ message.timeStamp | date:\'dd/MM/y H:mm\' }}</p> -->\n  <p class="timestamp" > {{ message.timeStamp | date: \'HH:mm\' }}\n    <ion-icon class="primeiro-icone" name="md-checkmark" [ngClass]="{\'ja-leu\' : alreadyRead}" *ngIf="isFromSender"></ion-icon>\n    <ion-icon class="segundo-icone" name="md-checkmark" [ngClass]="{\'ja-leu\' : alreadyRead}" *ngIf="isFromSender"></ion-icon>\n  </p>\n\n\n\n\n    <!-- <ion-item detail-none no-lines item-start>\n      <p class="timestamp"> {{ message.timeStamp | date: \'HH:mm\' }}</p>\n    </ion-item>\n    <ion-item detail-none no-lines item-end>\n        <ion-icon name="md-checkmark"></ion-icon>\n    </ion-item> -->\n\n  <!-- <ion-grid>\n    <ion-row>\n      <ion-col col-8>\n        <p class="timestamp"> {{ message.timeStamp | date: \'HH:mm\' }}</p>\n      </ion-col>\n      <ion-col col-4>\n       <ion-icon name="md-checkmark" style="font-size: 0.8em;\n       margin-top: 5px;\n       color: #999;"></ion-icon>\n      </ion-col>\n    </ion-row>\n  </ion-grid> -->\n</div>'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/components/message-box/message-box.component.html"*/,
             host: {
                 // can take properties in the element and make input property (placing a style (class) conditionally)
                 '[style.justify-content]': '((!isFromSender) ? "flex-start" : "flex-end")',
@@ -1114,7 +1113,7 @@ var MessageBoxComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(270);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth_service__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_signin_signin__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_signin_signin__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_user_service__ = __webpack_require__(51);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1155,7 +1154,7 @@ var MyApp = (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/app/app.html"*/'<ion-menu [content]="minhaNav" enabled="false" id="user-menu" persistent="false">\n    <user-menu [user]="currentUser">\n\n    </user-menu>\n</ion-menu>\n\n<ion-nav #minhaNav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/app/app.html"*/'<ion-menu [content]="minhaNav" enabled="false" id="user-menu" persistent="false">\n     <user-menu [user]="currentUser">\n\n    </user-menu>\n</ion-menu>\n\n<ion-nav #minhaNav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_auth_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
@@ -1370,7 +1369,7 @@ var BaseService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_chat_model__ = __webpack_require__(582);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__chat_chat__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_chat_chat_service__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__signup_signup__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__signup_signup__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_user_service__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_firebase__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_firebase__);
@@ -1409,24 +1408,24 @@ var HomePage = (function () {
         this.showLoading();
         this.chats = this.chatService.chats;
         this.users = this.userService.users;
-        //the users attribute of this page is the same as the attribute of the user service
-        this.menuCtrl.enable(true, 'user-menu'); // enable the menu when entering the home page
+        // o atributo users dessa página é o mesmo q o atributo do user service
+        this.menuCtrl.enable(true, 'user-menu'); // habilitar o menu qndo entrar na página home
     };
     HomePage.prototype.onSignup = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__signup_signup__["a" /* SignupPage */]);
     };
     HomePage.prototype.onChatCreate = function (recipientUser) {
         var _this = this;
-        this.userService.currentUser //has to have the subscribe for being a promise and we are 'listening' to the changes
+        this.userService.currentUser //tem q ter o subscribe por ser uma promise e a gente ficar 'ouvindo' as alteraçoes
             .first()
             .subscribe(function (currentUser) {
-            _this.chatService.getDeepChat(currentUser.$key, recipientUser.$key) //passes the users UID
+            _this.chatService.getDeepChat(currentUser.$key, recipientUser.$key) //passa o UID dos usuarios  
                 .first()
                 .subscribe(function (chat) {
                 if (chat.hasOwnProperty('$value')) {
-                    // If you have, it does not exist
-                    var timestamp = __WEBPACK_IMPORTED_MODULE_8_firebase___default.a.database.ServerValue.TIMESTAMP; // take the timestamp from the server
-                    var chat1 = new __WEBPACK_IMPORTED_MODULE_3__models_chat_model__["a" /* Chat */]('', timestamp, recipientUser.name, (recipientUser.photo || '')); // take the timestamp from the server
+                    // se tiver, é que não existe
+                    var timestamp = __WEBPACK_IMPORTED_MODULE_8_firebase___default.a.database.ServerValue.TIMESTAMP; // pega o timestamp do servido
+                    var chat1 = new __WEBPACK_IMPORTED_MODULE_3__models_chat_model__["a" /* Chat */]('', timestamp, recipientUser.name, (recipientUser.photo || '')); // parametro ultima mensagem e foto vazia
                     _this.chatService.create(chat1, currentUser.$key, recipientUser.$key);
                     var chat2 = new __WEBPACK_IMPORTED_MODULE_3__models_chat_model__["a" /* Chat */]('', timestamp, currentUser.name, (currentUser.photo || ''));
                     _this.chatService.create(chat2, recipientUser.$key, currentUser.$key);
@@ -1434,17 +1433,17 @@ var HomePage = (function () {
             });
         });
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__chat_chat__["a" /* ChatPage */], {
-            recipientUser: recipientUser // sends the parameter that is the recipient of the message to the ChatPage page
+            recipientUser: recipientUser // envia o parametro que é o destinatário da mensagem pra pagina ChatPage
         });
     };
     HomePage.prototype.onChatOpen = function (chat) {
         var _this = this;
-        var recipientUserId = chat.$key; // receives the recipient user ID
+        var recipientUserId = chat.$key; // recebe o ID do usuario destinatário
         this.userService.getUser(recipientUserId)
             .first()
             .subscribe(function (user) {
             _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__chat_chat__["a" /* ChatPage */], {
-                recipientUser: user // sends the parameter that is the recipient of the message to the ChatPage page
+                recipientUser: user // envia o parametro que é o destinatário da mensagem pra pagina ChatPage
             });
         });
     };
@@ -1458,8 +1457,8 @@ var HomePage = (function () {
                     this.chats = this.chats
                         .map(function (chats) {
                         return chats.filter(function (chat) {
-                            // play in small to not have error in comparison
-                            // if you return -1 there is no search term
+                            //  joga em minusculo pra não ter erro na comparação
+                            //  se retornar -1 é q não existe o termo pesquisado
                             return (chat.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
                         });
                     });
@@ -1468,8 +1467,8 @@ var HomePage = (function () {
                     this.users = this.users
                         .map(function (users) {
                         return users.filter(function (user) {
-                            // play in small to not have error in comparison
-                            // if you return -1 there is no search term
+                            //  joga em minusculo pra não ter erro na comparação
+                            //  se retornar -1 é q não existe o termo pesquisado
                             return (user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
                         });
                     });
@@ -1487,7 +1486,7 @@ var HomePage = (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/home/home.html"*/'<ion-header>\n  <!-- <ion-navbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title> \n  </ion-navbar>\n-->\n<custom-logged-header [title]="view | capitalize: true"></custom-logged-header>\n\n  <ion-toolbar>\n    <ion-segment [(ngModel)]="view"> <!-- this ng model will show which of the 2 tabs will show-->\n      <ion-segment-button value="chats">\n        Chats\n      </ion-segment-button>\n      <ion-segment-button value="users">\n        Users\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n\n  <ion-toolbar>\n    <ion-searchbar (ionInput)="filterItems($event)"></ion-searchbar>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <div [ngSwitch]="view">  <!-- the ng switch will stay listening to the ng model VIEW-->\n\n    <ion-list no-lines *ngSwitchCase=" \'chats\' "> <!-- if the view is CHATS-->\n      <button ion-item *ngFor="let chat of chats | async" (click)="onChatOpen(chat)">\n        <ion-avatar item-start>\n          <img [src]="chat.photo || \'assets/imgs/no-photo.jpg\'">\n        </ion-avatar>\n        <h2>{{ chat.title }}</h2>\n        <!-- if c.lastMessage is FALSE, it drops into else, which will call the element below (through #) -->\n        <!-- <p *ngIf="chat.lastMessage; else customMessage"> {{ chat.timeStamp | date: \'dd/MM/yyyy HH:mm\'}} - {{ chat.lastMessage }}</p>\n        <ng-template #customMessage>\n          <p>No messages.</p>\n        </ng-template> -->\n        <p *ngIf="chat.lastMessage"> {{ chat.timeStamp | date: \'dd/MM/yyyy HH:mm\'}} - {{ chat.lastMessage }}</p>\n        <p *ngIf="!chat.lastMessage">No messages.</p>\n      </button>\n    </ion-list>\n    <ion-list no-lines *ngSwitchCase=" \'users\' "> <!-- if the view is USERS -->\n      <!-- the pipe (| async) is to expect to return the server\'s observable response  -->\n      <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">\n        <ion-avatar item-left>\n          <img [src]="user.photo || \'assets/imgs/no-photo.jpg\'">\n        </ion-avatar>\n        {{user.name}} \n      </button> \n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/home/home.html"*/'<ion-header>\n  <!-- <ion-navbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title> \n  </ion-navbar>\n-->\n<custom-logged-header [title]="view | capitalize: true"></custom-logged-header>\n\n  <ion-toolbar>\n    <ion-segment [(ngModel)]="view"><!-- this ng model will show which of the 2 tabs will show-->\n      <ion-segment-button value="chats">\n        Chats\n      </ion-segment-button>\n      <ion-segment-button value="users">\n        Users\n      </ion-segment-button>\n    </ion-segment>\n  </ion-toolbar>\n\n  <ion-toolbar>\n    <ion-searchbar (ionInput)="filterItems($event)"></ion-searchbar>\n  </ion-toolbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <div [ngSwitch]="view">   <!-- the ng switch will stay listening to the ng model VIEW-->\n\n    <ion-list no-lines *ngSwitchCase=" \'chats\' "> <!-- if the view is CHATS-->\n      <button ion-item *ngFor="let chat of chats | async" (click)="onChatOpen(chat)">\n        <ion-avatar item-start>\n          <img [src]="chat.photo || \'assets/imgs/no-photo.jpg\'">\n        </ion-avatar>\n        <h2>{{ chat.title }}</h2>\n         <!-- if c.lastMessage is FALSE, it drops into else, which will call the element below (through #) -->\n        <!-- <p *ngIf="chat.lastMessage; else customMessage"> {{ chat.timeStamp | date: \'dd/MM/yyyy HH:mm\'}} - {{ chat.lastMessage }}</p>\n        <ng-template #customMessage>\n          <p>No messages.</p>\n        </ng-template> -->\n        <p *ngIf="chat.lastMessage"> {{ chat.timeStamp | date: \'dd/MM/yyyy HH:mm\'}} - {{ chat.lastMessage }}</p>\n        <p *ngIf="!chat.lastMessage">No messages.</p>\n      </button>\n    </ion-list>\n    <ion-list no-lines *ngSwitchCase=" \'users\' "> <!-- if the view is USERS -->\n      <!-- the pipe (| async) is to expect to return the server\'s observable response  -->\n    <button ion-item *ngFor="let user of users | async" (click)="onChatCreate(user)">\n        <ion-avatar item-left>\n          <img [src]="user.photo || \'assets/imgs/no-photo.jpg\'">\n        </ion-avatar>\n        {{user.name}} \n      </button> \n    </ion-list>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_auth_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_5__providers_chat_chat_service__["a" /* ChatService */],
@@ -1504,6 +1503,98 @@ var HomePage = (function () {
 /***/ }),
 
 /***/ 94:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SigninPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular_components_loading_loading_controller__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_home__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__signup_signup__ = __webpack_require__(95);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+var SigninPage = (function () {
+    function SigninPage(alertCtrl, authService, formBuilder, loadingCtrl, navCtrl, navParams) {
+        this.alertCtrl = alertCtrl;
+        this.authService = authService;
+        this.formBuilder = formBuilder;
+        this.loadingCtrl = loadingCtrl;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        var emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+        this.signinForm = this.formBuilder.group({
+            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern(emailRegex)])],
+            password: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].minLength(6)]]
+        });
+    }
+    SigninPage.prototype.onSignUp = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__signup_signup__["a" /* SignupPage */]);
+    };
+    SigninPage.prototype.onSubmit = function () {
+        var _this = this;
+        var loading = this.showLoading(); // return o loading
+        var user = this.signinForm.value;
+        this.authService.signInWithEmail(user)
+            .then(function (isLogged) {
+            if (isLogged) {
+                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
+                loading.dismiss();
+            }
+        })
+            .catch(function (er) {
+            loading.dismiss();
+            _this.showAlert(er);
+        });
+    };
+    SigninPage.prototype.showLoading = function () {
+        var loading = this.loadingCtrl.create({
+            content: "Please wait..."
+        });
+        loading.present();
+        return loading;
+    };
+    SigninPage.prototype.showAlert = function (message) {
+        this.alertCtrl.create({
+            message: message,
+            buttons: ['Ok']
+        }).present();
+    };
+    SigninPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'page-signin',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/signin/signin.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Sign In</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <h1 text-center>\n    <ion-icon name="chatboxes" color="primary" class="auth-icon"></ion-icon>\n  </h1>\n\n  <form (ngSubmit)="onSubmit()" [formGroup]="signinForm">\n  \n    <ion-item>\n      <ion-icon name="mail" item-left color="primary"></ion-icon>\n      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-icon name="lock" item-left color="primary"></ion-icon>\n      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>\n    </ion-item>\n    <br>\n\n    <button ion-button full type="submit" [disabled]="signinForm.invalid">Log in</button>\n    \n  </form>\n  \n  <button ion-button full clear text-center (click)="onSignUp()">Sign Up</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/signin/signin.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+    ], SigninPage);
+    return SigninPage;
+}());
+
+//# sourceMappingURL=signin.js.map
+
+/***/ }),
+
+/***/ 95:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1630,98 +1721,6 @@ var SignupPage = (function () {
 }());
 
 //# sourceMappingURL=signup.js.map
-
-/***/ }),
-
-/***/ 95:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SigninPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular_components_loading_loading_controller__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__home_home__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__signup_signup__ = __webpack_require__(94);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-var SigninPage = (function () {
-    function SigninPage(alertCtrl, authService, formBuilder, loadingCtrl, navCtrl, navParams) {
-        this.alertCtrl = alertCtrl;
-        this.authService = authService;
-        this.formBuilder = formBuilder;
-        this.loadingCtrl = loadingCtrl;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        var emailRegex = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-        this.signinForm = this.formBuilder.group({
-            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].pattern(emailRegex)])],
-            password: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].minLength(6)]]
-        });
-    }
-    SigninPage.prototype.onSignUp = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__signup_signup__["a" /* SignupPage */]);
-    };
-    SigninPage.prototype.onSubmit = function () {
-        var _this = this;
-        var loading = this.showLoading(); // return o loading
-        var user = this.signinForm.value;
-        this.authService.signInWithEmail(user)
-            .then(function (isLogged) {
-            if (isLogged) {
-                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
-                loading.dismiss();
-            }
-        })
-            .catch(function (er) {
-            loading.dismiss();
-            _this.showAlert(er);
-        });
-    };
-    SigninPage.prototype.showLoading = function () {
-        var loading = this.loadingCtrl.create({
-            content: "Please wait..."
-        });
-        loading.present();
-        return loading;
-    };
-    SigninPage.prototype.showAlert = function (message) {
-        this.alertCtrl.create({
-            message: message,
-            buttons: ['Ok']
-        }).present();
-    };
-    SigninPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'page-signin',template:/*ion-inline-start:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/signin/signin.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Sign In</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <h1 text-center>\n    <ion-icon name="chatboxes" color="primary" class="auth-icon"></ion-icon>\n  </h1>\n\n  <form (ngSubmit)="onSubmit()" [formGroup]="signinForm">\n  \n    <ion-item>\n      <ion-icon name="mail" item-left color="primary"></ion-icon>\n      <ion-input type="email" placeholder="Email" formControlName="email"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-icon name="lock" item-left color="primary"></ion-icon>\n      <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>\n    </ion-item>\n    <br>\n\n    <button ion-button full type="submit" [disabled]="signinForm.invalid">Log in</button>\n    \n  </form>\n  \n  <button ion-button full clear text-center (click)="onSignUp()">Sign Up</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/surendra/Desktop/ionic/firebase-chat/src/pages/signin/signin.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular_components_loading_loading_controller__["a" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], SigninPage);
-    return SigninPage;
-}());
-
-//# sourceMappingURL=signin.js.map
 
 /***/ })
 

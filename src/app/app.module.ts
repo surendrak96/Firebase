@@ -29,7 +29,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
   authDomain: "fir-chat-c9b65.firebaseapp.com",
   databaseURL: "https://fir-chat-c9b65.firebaseio.com",
   storageBucket: "fir-chat-c9b65.appspot.com",
- // messagingSenderId: "130143153718"
+  // messagingSenderId: "717491479259"
 };
 
 

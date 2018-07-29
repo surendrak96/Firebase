@@ -20,6 +20,7 @@ import firebase from 'firebase';
 export class HomePage {
 
   users: FirebaseListObservable<User[]>;  // users attribute is an array of Users of type FireBase Observable
+
   chats: FirebaseListObservable<Chat[]>;
   view: string = 'chats';
 
@@ -45,7 +46,7 @@ export class HomePage {
     this.chats = this.chatService.chats;
     this.users = this.userService.users;
     //the users attribute of this page is the same as the attribute of the user service
-    this.menuCtrl.enable(true, 'user-menu'); // enable the menu when entering the home page
+    this.menuCtrl.enable(true, 'user-menu');// enable the menu when entering the home page
 
   }
 
@@ -54,30 +55,31 @@ export class HomePage {
   }
 
   onChatCreate(recipientUser: User): void {
-
-    this.userService.currentUser  //has to have the subscribe for being a promise and we are 'listening' to the changes
+    
+    this.userService.currentUser   //has to have the subscribe for being a promise and we are 'listening' to the changes
       .first()
       .subscribe((currentUser: User) => { // the current user is the current user
         this.chatService.getDeepChat(currentUser.$key,recipientUser.$key) //passes the users UID
-          .first()
+          .first()  
           .subscribe((chat: Chat) => {  // get a chat IF THERE'S in server
-
-            if(chat.hasOwnProperty('$value')) { // chat has its own property called '$ value'?
-              // If you have, it does not exist
+            
+            if(chat.hasOwnProperty('$value')) {  // chat has its own property called '$ value'?
+            // If you have, it does not exist
               let timestamp: Object = firebase.database.ServerValue.TIMESTAMP; // take the timestamp from the server
-
+              
               let chat1 = new Chat('',timestamp,recipientUser.name, (recipientUser.photo || '')); // take the timestamp from the server
               this.chatService.create(chat1,currentUser.$key,recipientUser.$key);
-
+              
               let chat2 = new Chat('',timestamp,currentUser.name,(currentUser.photo || ''));
               this.chatService.create(chat2,recipientUser.$key,currentUser.$key);
             }
 
           });
-
+          
       })
       this.navCtrl.push(ChatPage, {
         recipientUser: recipientUser  // sends the parameter that is the recipient of the message to the ChatPage page
+
       });
   }
 
@@ -91,7 +93,7 @@ export class HomePage {
         });
       });
   }
-
+  
   filterItems(event: any): void {
     let searchTerm: string = event.target.value;
     this.chats = this.chatService.chats;
@@ -104,8 +106,8 @@ export class HomePage {
           this.chats = <FirebaseListObservable<Chat[]>>this.chats
             .map((chats: Chat[]) => {
               return chats.filter((chat: Chat) => {
-              // play in small to not have error in comparison
-                               // if you return -1 there is no search term
+                // play in small to not have error in comparison
+                                 // if you return -1 there is no search term
                 return (chat.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
               })
           })
@@ -115,17 +117,17 @@ export class HomePage {
           this.users = <FirebaseListObservable<User[]>>this.users
             .map((users: User[]) => {
               return users.filter((user: User) => {
-               // play in small to not have error in comparison
-                                // if you return -1 there is no search term
+                  // play in small to not have error in comparison
+                                   // if you return -1 there is no search term
                 return (user.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
               })
           })
           break;
       }
     }
-  }
+  }  
 
-
+  
   private showLoading(): Loading {
     let loading: Loading = this.loadingCtrl.create({
       content: "Please wait...",

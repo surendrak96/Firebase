@@ -10,12 +10,13 @@
   <user-info [user]="currentUser"></user-info>
 
   <button ion-button block (click)="canEdit = !canEdit">
-   
+    <!-- ao clicar, o canEdit passa a ser falso -->
     Edit Profile
   </button>
 
   <form (ngSubmit)="onSubmit($event)" *ngIf="canEdit" #profileForm="ngForm">
-  
+    <!-- variável profileForm recebe o elemento do formulário (ngForm) -->
+
     <ion-item>
       <ion-icon name="person" item-left></ion-icon>
       <ion-input type="text" placeholder="Name" [(ngModel)]="currentUser.name"
@@ -33,7 +34,7 @@
     <ion-item>
       <ion-icon name="image" item-left></ion-icon>
       <input type="file" accept="image/*" (change)="onPhoto($event)">
-        </ion-item>
+      </ion-item>
 
     <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
     

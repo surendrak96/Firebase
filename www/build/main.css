@@ -28009,12 +28009,12 @@ message-box .text p.timestamp {
   color: #999;
 }
 
-message-box .text p ion-icon.primeiro-icone {
+message-box .text p ion-icon.first-icon {
   float: right;
   margin-left: -4px;
 }
 
-message-box .text p ion-icon.segundo-icone {
+message-box .text p ion-icon.second-icon {
   float: right;
   padding-left: 15px;
 }
@@ -28023,7 +28023,7 @@ message-box .sender-background {
   background-color: #baf46e;
 }
 
-message-box .ja-leu {
+message-box .already-read {
   color: #488aff;
 }
 

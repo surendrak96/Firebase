@@ -12,7 +12,7 @@ export class CustomLoggedHeaderComponent extends baseComponent{
 
   @Input() title: string;
   @Input() user: User;
- 
+  // @input is a visible property for the other components
   constructor(
     public alertCtrl: AlertController,
     public authService: AuthService,

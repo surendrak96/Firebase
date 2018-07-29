@@ -7,10 +7,11 @@
 
 <ion-content padding>
   <ion-list no-lines>
-    
+    <!-- <ion-item *ngFor="let message of messages | async">{{message.text}}</ion-item> -->
     <message-box *ngFor="let message of messages | async" [message]="message" 
                   [isFromSender]="(message.userId == sender.$key)" [alreadyRead]="(message.read)">
-                  <!-- If the user id (sender. $ Key) is equal to the id of the message owner (message.userId) then it will return true -->
+                   <!-- If the user id (sender. $ Key) is equal to the id of the message owner (message.userId) then it will return true -->
+
     </message-box>
   </ion-list>
 </ion-content>
@@ -21,10 +22,11 @@
     <ion-item no-lines>
       <ion-input type="text" (keyup.enter)="sendMessage(newMessage); newMessage = '' "
                  placeholder="Type here..." [(ngModel)]="newMessage">
-                 <!-- key up detects if pressing enter activates the send msg function -->
+                <!-- key up detects if pressing enter activates the send msg function -->
+
       </ion-input>
       <button ion-button item-right (click)="sendMessage(newMessage); newMessage = '' "> 
-        <!-- dps q call function, new message turns an empty string-->
+         <!-- dps q call function, new message turns an empty string-->
         <ion-icon name="send"></ion-icon>
       </button>
     </ion-item>

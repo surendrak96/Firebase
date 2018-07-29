@@ -17,8 +17,8 @@ const extractError = (error: Response | any): string => {
 }
 
 export abstract class BaseService {
-   // exporting abstract class that can not be instantiated. It just needs to be INHERITED by other classes!
-       protected handlePromiseError(error: Response | any): Promise<any> {
+// exporting abstract class that can not be instantiated. It just needs to be INHERITED by other classes!
+protected handlePromiseError(error: Response | any): Promise<any> {
         return Promise.reject(extractError(error));
     }
 
